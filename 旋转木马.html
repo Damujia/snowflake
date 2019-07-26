@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>旋转木马</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        .demo {
+            /* border: 1px solid black; */
+            height: 120px;
+            width: 200px;
+            position: relative;
+            margin: 200px auto;
+            transform-style: preserve-3d;
+            transform-origin: center;
+            /* perspective-origin: 500px -500px; */
+            transform: rotateX(0deg) rotateY(0deg) rotateZ(0deg);
+            transition: all .6s;
+        }
+
+        .cockhorse1 {
+            position: absolute;
+            top: 0px;
+            left: 0px;
+            width: 200px;
+            height: 120px;
+            /* opacity: .5; */
+            ;
+            transition: all .8s;
+            transform-origin: left;
+            transform: translateZ(184px);
+
+
+        }
+
+        .cockhorse2 {
+            position: absolute;
+            top: 0px;
+            left: 0px;
+            width: 200px;
+            height: 120px;
+            /* opacity: .7; */
+
+            transition: all .8s;
+            transform-origin: left;
+            transform: translateX(-100px) rotateY(-60deg);
+
+        }
+
+        .cockhorse3 {
+            position: absolute;
+            top: 0px;
+            left: 0px;
+            width: 200px;
+            height: 120px;
+            /* opacity: 1; */
+
+            transition: all .8s;
+            transform-origin: right;
+            transform: translateX(100px) rotateY(60deg);
+
+        }
+
+        .cockhorse4 {
+            position: absolute;
+            top: 0px;
+            left: 0px;
+            width: 200px;
+            height: 120px;
+            /* opacity: .7; */
+
+            transition: all .8s;
+            transform-origin: right;
+            transform: translateX(100px) rotateY(-60deg);
+
+        }
+
+        .cockhorse5 {
+            position: absolute;
+            top: 0px;
+            left: 0px;
+            width: 200px;
+            height: 120px;
+            /* opacity: .5; */
+
+            transition: all .8s;
+            transform-origin: left;
+            transform: translateX(-100px) rotateY(60deg);
+        }
+
+        .cockhorse6 {
+            position: absolute;
+            top: 0px;
+            left: 0px;
+            width: 200px;
+            height: 120px;
+            /* opacity: .5; */
+            z-index: 0;
+            transition: all .8s;
+            transform: translateZ(-184px);
+        }
+
+        a {
+            display: inline-block;
+            width: 20px;
+            height: 40px;
+            background-color: rgba(0, 0, 0, .5);
+            line-height: 40px;
+            text-align: center;
+            color: #fff;
+            text-decoration: none;
+        }
+
+        a:nth-child(7) {
+            position: absolute;
+            top: 50px;
+            left: -140px;
+        }
+
+        a:nth-child(8) {
+            position: absolute;
+            top: 50px;
+            right: 40px;
+        }
+
+        .demo div img {
+            width: 100%;
+            height: 100%;
+
+        }
+
+        .demo div {
+            border: 5px solid rgba(12, 231, 45, 0.374);
+        }
+    </style>
+</head>
+
+<body>
+    <div class="demo">
+        <div><img class="daxiao" src="./1.jpg" alt=""></div>
+        <div><img class="daxiao" src="./2.jpg" alt=""></div>
+        <div><img class="daxiao" src="./3.jpg" alt=""></div>
+        <div><img class="daxiao" src="./4.jpg" alt=""></div>
+        <div><img class="daxiao" src="./5.jpg" alt=""></div>
+        <div><img class="daxiao" src="738206.png" alt=""></div>
+
+    </div>
+    <a href="javascript:void(0)" class="left">&lt;</a>
+    <a href="javascript:void(0)" class="right">&gt;</a>
+</body>
+<script>
+    let butleft = document.querySelector('.left');
+    let butright = document.querySelector('.right');
+    let img = document.querySelectorAll('.demo>div');
+    let demo = document.querySelector('.demo');
+
+    let shum = ['cockhorse1', 'cockhorse2', 'cockhorse3', 'cockhorse4', 'cockhorse5', 'cockhorse6'];
+    img.forEach((e, i) => {
+        e.className = shum[i];
+    });
+    // butright.onclick = function () {
+    //     let diyi = shum.shift();
+    //     shum.push(diyi);
+    //     img.forEach((e, i) => {
+    //         e.className = shum[i];
+    //     });
+    // }
+    // function left() {
+    //     let diyi = shum.pop();
+    //     shum.unshift(diyi);
+    //     img.forEach((e, i) => {
+    //         e.className = shum[i];
+    //     });
+    // };
+    let jai = 0;
+    let intme = setInterval(function () {
+        jai += 60;
+        demo.style.transform = 'rotateX(-24deg) rotateY(' + jai + 'deg)';
+
+    }, 1000);
+
+    butleft.onclick = function () {
+        jai -= 60;
+        demo.style.transform = 'rotateX(-24deg) rotateY(' + jai + 'deg)'
+    }
+    butright.onclick = function () {
+        jai += 60;
+        demo.style.transform = 'rotateX(-24deg) rotateY(' + jai + 'deg)'
+    }
+    // butleft.addEventListener('click', left);
+
+    // let imte = setInterval(left, 1000);
+
+    //羽毛
+</script>
+
+</html>
