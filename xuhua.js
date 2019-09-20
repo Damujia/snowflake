@@ -1,4 +1,6 @@
-(function () {
+(function() {
+    var elements = [];
+
     function snowflake(width, x, y, src) {
         this.width = 80,
             this.height = 80,
@@ -6,8 +8,7 @@
             this.y = y || 0,
             this.src = "zodian.png"
     }
-    var shujia = 0;
-    snowflake.prototype.init = function (body) {
+    snowflake.prototype.init = function(body) {
         // document.body.style.height = 620 + "px";
         var imgs = document.createElement('img');
         document.body.appendChild(imgs);
@@ -19,20 +20,18 @@
         this.y = parseInt(Math.random() * document.body.offsetHeight);
         imgs.style.left = this.x + "px";
         imgs.style.top = this.y + "px";
-        shujia = 700;
-        imgs.style.transform = "translateY("+ shujia +"px)";
-        if ((document.body.clientWidth-imgs.clientHeight) == 600) {
+        imgs.style.transform = "translateY(700px)";
+        elements.push(imgs);
+        if (imgs.style.transform == "translateY(700px)") {
             imgs.style.width = 0;
-            shujia = 0;
-            imgs.remove();
         };
     };
     window.snowflake = snowflake;
 }());
-(function () {
+(function() {
     var son = new snowflake();
     // son.init();
-    var shi = setInterval(function () {
+    var shi = setInterval(function() {
         son.init();
-    }, 5);
+    }, 100);
 }());
